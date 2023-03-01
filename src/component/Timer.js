@@ -92,14 +92,17 @@ const Timer = ({
                   <li
                     onClick={() => {
                       if (
-                        days !== 0 ||
-                        hours !== 0 ||
-                        minutes !== 0 ||
-                        seconds !== 0
+                        (days !== 0 ||
+                          hours !== 0 ||
+                          minutes !== 0 ||
+                          seconds !== 0) &&
+                        hours < 60 &&
+                        minutes < 60 &&
+                        seconds < 60
                       ) {
                         setIsActive(true);
                       } else {
-                        window.alert("add time");
+                        window.alert("add valid time");
                       }
                     }}
                   >
