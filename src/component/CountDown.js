@@ -6,6 +6,7 @@ export const CountDown = () => {
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
     // setDays(window.localStorage.getItem("days"));
@@ -57,6 +58,8 @@ export const CountDown = () => {
         setHours={setHours}
         setMinutes={setMinutes}
         setSeconds={setSeconds}
+        disabled={disabled}
+        setDisabled={setDisabled}
       />
     </>
   );

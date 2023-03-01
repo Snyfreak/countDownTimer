@@ -13,6 +13,8 @@ const Timer = ({
   setDays,
   setHours,
   setMinutes,
+  disabled,
+  setDisabled,
 }) => {
   const [dropDown, setDropDown] = useState(false);
   return (
@@ -30,6 +32,7 @@ const Timer = ({
           <div className="input">
             <div className="time-input2">
               <input
+                disabled={disabled}
                 value={days}
                 onChange={(e) => {
                   setDays(e.target.value);
@@ -43,6 +46,7 @@ const Timer = ({
           <div className="input">
             <div className="time-input2">
               <input
+                disabled={disabled}
                 value={hours}
                 onChange={(e) => {
                   setHours(e.target.value);
@@ -56,6 +60,7 @@ const Timer = ({
           <div className="input">
             <div className="time-input2">
               <input
+                disabled={disabled}
                 value={minutes}
                 onChange={(e) => {
                   setMinutes(e.target.value);
@@ -69,6 +74,7 @@ const Timer = ({
           <div className="input">
             <div className="time-input2">
               <input
+                disabled={disabled}
                 value={seconds}
                 onChange={(e) => {
                   setSeconds(e.target.value);
@@ -96,11 +102,13 @@ const Timer = ({
                           hours !== 0 ||
                           minutes !== 0 ||
                           seconds !== 0) &&
-                        hours < 60 &&
+                        hours < 24 &&
                         minutes < 60 &&
                         seconds < 60
                       ) {
                         setIsActive(true);
+
+                        setDisabled((disabled) => !disabled);
                       } else {
                         window.alert("add valid time");
                       }
@@ -118,7 +126,7 @@ const Timer = ({
                       ) {
                         setIsActive(false);
                       } else {
-                        window.alert("add time");
+                        window.alert("add input");
                       }
                     }}
                   >
@@ -133,6 +141,7 @@ const Timer = ({
                   </li>
                   <li
                     onClick={() => {
+                      setDisabled(false);
                       setIsActive(false);
                       setIsActive(0);
                       setSeconds(0);
